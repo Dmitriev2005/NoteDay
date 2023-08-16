@@ -1,0 +1,86 @@
+.userBlock{
+    float: right;   
+    font-size: 20px;
+}
+.userCurrent{
+    background-color: #75fc21;
+    border: 5px solid black;
+    
+}
+.userChange{
+    background-color: #545454;
+    border: 5px solid black;
+    color: #c91010;
+}
+header{
+    text-align: center;
+    font-size: 30px;
+    background-color: #9fa899;
+}
+.generalContent{
+    background-color: #9fa899;
+    /* height: 2000px; */
+}
+.newNote{
+    background-color: #a3de97;
+    font-size: 24px;
+    width: 150px;
+    height: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.newNote:hover{
+    background-color: #BFFFB2;
+    user-select: none;
+}
+.note{
+    font-size: 24px;
+    background-color: #CED8C7;
+    width: 80%;
+    vertical-align: middle;
+}
+.noteRemove{
+    background-color: #e02d2d;
+    width: 70px;
+    height: 15px;
+    margin-left: 5%;
+    
+}
+.flag{
+     width: 0;
+    height: 0;
+    border-top: 50px solid #BFFFB2;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    /* background-color: #BFFFB2; 
+    width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid red; */
+}
+
+.noteDate,.noteNameEvent,.note,.noteRemove,.flag{
+    display: inline-block;
+}
+.title{
+    width: 200px;
+    
+}
+.description{
+    width: 400px;
+    font-size: 14px;
+}
+.btn{
+    background-color: #71db2e;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #78fa7e;
+}
+.responseSuccessfully{
+    background-color: #36f790;
+    border: 2px solid #0cc261;
+    text-align: center;
+    display: none;
+}

@@ -1,0 +1,25 @@
+.autoReg{
+   
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    
+    margin-top: 10%;
+    
+    
+}
+body{
+    background-color: #5598a1;
+    font-size: 24px;
+}
+input{
+    width: 100%;
+    font-size: 24px;
+}
+.responseSuccessfully{
+    background-color: #36f790;
+    border: 2px solid #0cc261;
+    text-align: center;
+    display: none;
+
+}
