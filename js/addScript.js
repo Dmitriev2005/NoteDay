@@ -28,6 +28,7 @@ function getCookie(name) {
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
 }
+
 document.querySelector(".btn").onclick = () =>{
    
     const date = new Date(document.getElementById("date").value);
@@ -53,9 +54,8 @@ document.querySelector(".btn").onclick = () =>{
         ).then(
             commits => {
                 if(commits==="true"){
-                    messageRespose("Запись добавленна!",false);
-                    setTimeout(function(){location.reload()},3000);
-
+                    const container = document.querySelector(".note-container");
+                    container.innerHTML+=`<div class="item"> <div class="event"><div class="note-date">${addEvent.date}</div><div class="note-title">${addEvent.title}</div><div class="note-content">${addEvent.description}</div></div><br><input type="button" value="Редактировать" class="btn-edit"><input type="button" value="Удалить" class="btn-delete"></div><br>`;
                 }
                 else{
                     messageRespose("Ошибка!",true);
