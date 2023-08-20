@@ -17,10 +17,8 @@ function messageRespose(message, isError){
     }
     el.innerHTML = message;
     el.style.display = "block";
-}
-function destroyMessage(){
-    const el = document.querySelector(".responseSuccessfully");
-    el.style.display = "none";
+
+    setTimeout(()=>{el.style.display = "none"},3000);
 }
 function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
@@ -28,10 +26,9 @@ function getCookie(name) {
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-
 document.querySelector(".btn").onclick = () =>{
    
-    const date = new Date(document.getElementById("date").value);
+    const date = (d = new Date(document.getElementById("date").value))>=new Date()?d:myGlobal.messageRespose("Дата не должна быть прошедшей!",true);
     const time = document.getElementById("time").value;
     const addEvent = new Object();
 
@@ -39,8 +36,7 @@ document.querySelector(".btn").onclick = () =>{
     addEvent.title = document.getElementById("filedTitle").value;
     addEvent.description = document.getElementById("fieldDescription").value;
     addEvent.user = getCookie("id");
-    
-    console.log(addEvent.date);
+    if(addEvent.date!=""&&addEvent.title!=""&&addEvent.description!="")  
         fetch(
             "/php/addEvent.php",{
                 method:"POST",
@@ -51,17 +47,20 @@ document.querySelector(".btn").onclick = () =>{
             }
         ).then(
             response => response.text()
+            
         ).then(
             commits => {
                 if(commits==="true"){
-                    const container = document.querySelector(".note-container");
-                    container.innerHTML+=`<div class="item"> <div class="event"><div class="note-date">${addEvent.date}</div><div class="note-title">${addEvent.title}</div><div class="note-content">${addEvent.description}</div></div><br><input type="button" value="Редактировать" class="btn-edit"><input type="button" value="Удалить" class="btn-delete"></div><br>`;
+                    myGlobal.messageRespose("Запись добавлена!",false);
+                    setTimeout(function(){location.reload()},3000);
                 }
                 else{
-                    messageRespose("Ошибка!",true);
+                    myGlobal.messageRespose("Ошибка!",true);
                     setTimeout(function(){location.reload()},3000);
                 }
             }
         )
+    else
+        messageRespose("Есть пустые поля!",true);
     
 }

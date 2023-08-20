@@ -1,11 +1,5 @@
 const btnRegistration = document.querySelector(".btnRegistration");
-const initialisationData = () =>{
-    const autorisData = new Object();
-    autorisData.login = document.querySelector(".login").value;
-    autorisData.password = document.querySelector(".password").value;
-    return autorisData;
-};
-const messageRespose = (text,isError)=>{
+function messageRespose(message, isError){
     const el = document.querySelector(".responseSuccessfully");
     if(isError){
         el.style.backgroundColor = "#ed4a54";
@@ -15,9 +9,17 @@ const messageRespose = (text,isError)=>{
         el.style.backgroundColor = "#36f790";
         el.style.border = "2px solid #0cc261";
     }
-    el.innerHTML = text;
+    el.innerHTML = message;
     el.style.display = "block";
+
+    setTimeout(()=>{el.style.display = "none"},3000);
 }
+const initialisationData = () =>{
+    const autorisData = new Object();
+    autorisData.login = document.querySelector(".login").value;
+    autorisData.password = document.querySelector(".password").value;
+    return autorisData;
+};
 btnRegistration.onclick = () =>{
     const sendData = initialisationData();
     
