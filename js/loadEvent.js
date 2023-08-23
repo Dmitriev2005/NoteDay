@@ -7,8 +7,76 @@ fetch(
     commits=>{
         const container = document.querySelector(".note-container");
         commits.forEach(element => {
-            container.innerHTML+=`<div class="item"> <div class="event"><div class="note-date">${element.date_event}</div><div class="note-title">${element.name_event}</div><div class="note-content">${element.description_event}</div></div><br><input type="button" value="Редактировать" class="btn-edit"><input type="button" value="Удалить" class="btn-delete"></div><br>`;
+               
+            const item = document.createElement("div");
+            item.classList = "item";
 
+            const event = document.createElement("div");
+            event.classList = "event";
+
+            const noteId = document.createElement("div");
+            noteId.classList = "note-id";
+            
+            const noteDate = document.createElement("div");
+            noteDate.textContent = element.date_event;
+            noteDate.classList = "note-date";
+
+            const noteTitle = document.createElement("div");
+            noteTitle.textContent = element.name_event;
+            noteTitle.classList = "note-title"
+
+            const noteContent = document.createElement("div");
+            noteContent.textContent = element.description_event;
+            noteContent.classList = "note-content";
+
+            const btnEdit = document.createElement("input");
+            btnEdit.type = "button";
+            btnEdit.value = "Редактировать";
+            btnEdit.classList = "btn-edit";
+            btnEdit.addEventListener("click",function(){
+                const date = document.querySelector("#date");
+                const time = document.querySelector("#time");
+                const title = document.querySelector(".date");
+            });
+
+            const btnDelete = document.createElement("input");
+            btnDelete.type = "button"
+            btnDelete.value = "Удалить";
+            btnDelete.classList = "btn-delete";
+            btnDelete.addEventListener("click",function(){
+                fetch(
+                    "/php/deleteEvent.php",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify(element)
+                    }
+                ).then(
+                    response=>{
+                        if(response.ok){
+                            messageRespose("Запись удалена!",false);
+                            setTimeout(()=>location.reload(),3000);
+                        }
+                        else{
+                            messageRespose("Ошибка!",true);
+                            setTimeout(()=>location.reload(),3000);
+                        }
+                            
+                    }
+                )
+            });
+            event.appendChild(noteId);
+            event.appendChild(noteDate);
+            event.appendChild(noteTitle);
+            event.appendChild(noteContent);
+
+            item.appendChild(event);
+            item.appendChild(btnEdit);
+            item.appendChild(btnDelete);
+
+            
+            container.appendChild(item);
         });
         
     }

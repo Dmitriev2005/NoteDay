@@ -1,18 +1,17 @@
 <?php
-        $data = json_decode(file_get_contents('php://input'),true);
-        if(isset($data)){
-            $addres = "127.0.0.1";
-            $user = "root";
-            $password = null;
-            $nameBase = "edit_note";
-            $host = "3306";
+    require('lib.php'); 
+
+    $query = $connect->prepare("SELECT * FROM edit_note_event WHERE name_user=?");
+    $query->bind_param("i",$_COOKIE['id']);
+    $query->execute();
+
+    $res = $query->get_result();
     
-            $connect = new mysqli($addres,$user,$password,$nameBase,$host);
+    $cook = $_COOKIE['id'];
+    $final_result = $res->fetch_all(MYSQLI_ASSOC);
+    echo(json_encode($final_result));
     
-            $query = $connect->prepare("SELECT * FROM edit_note_event WHERE id=?");
-            $query->bind_param("i",$data['id']);
-            //$res = 
-            echo(json_encode($res->fetch_all(MYSQLI_ASSOC)));
-        }
+    $connect->close();
+
        
         

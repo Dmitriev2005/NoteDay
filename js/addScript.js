@@ -28,7 +28,7 @@ function getCookie(name) {
 }
 document.querySelector(".btn").onclick = () =>{
    
-    const date = (d = new Date(document.getElementById("date").value))>=new Date()?d:myGlobal.messageRespose("Дата не должна быть прошедшей!",true);
+    const date = (d = new Date(document.getElementById("date").value))>=new Date()?d:messageRespose("Дата не должна быть прошедшей!",true);
     const time = document.getElementById("time").value;
     const addEvent = new Object();
 
@@ -51,11 +51,11 @@ document.querySelector(".btn").onclick = () =>{
         ).then(
             commits => {
                 if(commits==="true"){
-                    myGlobal.messageRespose("Запись добавлена!",false);
+                    messageRespose("Запись добавлена!",false);
                     setTimeout(function(){location.reload()},3000);
                 }
                 else{
-                    myGlobal.messageRespose("Ошибка!",true);
+                    messageRespose("Ошибка!",true);
                     setTimeout(function(){location.reload()},3000);
                 }
             }
