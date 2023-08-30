@@ -25,7 +25,7 @@ btnRegistration.onclick = () =>{
     
     if(sendData.password!=""&&sendData.password!="")
         if(document.querySelector(".respeatPassword").value===sendData.password){
-            fetch("http://noteday.com/php/registrationBackend.php",
+            fetch("/php/registrationBackend.php",
             {
                 method:"POST",
                 headers:{
