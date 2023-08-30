@@ -11,6 +11,7 @@
     background-color: #545454;
     border: 5px solid black;
     color: #c91010;
+    cursor: pointer;
 }
 header{
     text-align: center;
@@ -90,10 +91,15 @@ header{
 }
 .btn-delete{
     background-color: #c91010;
+    cursor: pointer;
+}
+.btn-delete:hover{
+    background-color: #e84d4d;
 }
 .btn-edit{
     background-color: #cee772;
+    cursor: pointer;
 }
-.note-id{
-    
+.btn-edit:hover{
+    background-color: #e9faac;
 }

@@ -38,10 +38,14 @@ btnRegistration.onclick = () =>{
             ).then(
                 commits => {
                     let responseServer = commits;
-                    if(responseServer==="true")
-                    messageRespose("Вы зарегистрированны!",false);
-                    else if(responseServer==="This dublicate user!")
-                        messageRespose("Такой польвзователь уже есть!",true);
+                    if(responseServer==="true"){
+                        messageRespose("Вы зарегистрированны!",false);
+                        setTimeout(()=>location.reload(),3000)
+                    }
+                    else if(responseServer==="This dublicate user!"){
+                        messageRespose("Такой пользователь уже есть!",true);
+                        setTimeout(()=>location.reload(),3000)
+                    }
                 }
             )
         }

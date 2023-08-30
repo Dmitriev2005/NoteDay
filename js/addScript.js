@@ -46,11 +46,8 @@ document.querySelector(".btn").onclick = () =>{
                 body:JSON.stringify(addEvent)
             }
         ).then(
-            response => response.text()
-            
-        ).then(
-            commits => {
-                if(commits==="true"){
+            response => {
+                if(response.ok){
                     messageRespose("Запись добавлена!",false);
                     setTimeout(function(){location.reload()},3000);
                 }
@@ -59,6 +56,7 @@ document.querySelector(".btn").onclick = () =>{
                     setTimeout(function(){location.reload()},3000);
                 }
             }
+            
         )
     else
         messageRespose("Есть пустые поля!",true);

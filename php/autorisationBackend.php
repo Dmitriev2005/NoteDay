@@ -16,9 +16,10 @@
             $id = mysqli_fetch_array($responseQuery)['id'];
             //
             if ($responseQuery && $responseQuery->num_rows > 0) {
+
                 echo json_encode(["login"=>$login, "password"=>$password,"id"=>$id]);
             } else {
-                echo "";
+                http_response_code(404);
             }
         } else {
             echo "connection false";

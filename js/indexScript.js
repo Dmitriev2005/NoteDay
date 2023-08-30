@@ -12,7 +12,7 @@ btnRegistration.onclick = () =>{
 btnAutoris.onclick = () =>{
     const sendData = initialisationData();
 
-    fetch("http://noteday.com/php/autorisationBackend.php",
+    fetch("/php/autorisationBackend.php",
         {
             method:"POST",
             headers:{
@@ -21,7 +21,10 @@ btnAutoris.onclick = () =>{
             body:JSON.stringify(sendData)
         }
     ).then(
-       response=>response.json()
+       response=>response.ok?response.json():()=>{
+            messageRespose("Такого пользователя нет!",true);
+            setTimeout(()=>location.reload,3000);
+        }
 
     ).then(
         commits =>{
@@ -31,6 +34,10 @@ btnAutoris.onclick = () =>{
                 document.cookie = "password="+encodeURIComponent(answer.password);
                 document.cookie = "id="+encodeURIComponent(String(answer.id));
                 window.location.href = "html/general.html";
+            }
+            else{
+                messageRespose("Такого пользователя нет!",true);
+                setTimeout(()=>location.reload,3000);
             }
                 
         }

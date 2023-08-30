@@ -8,6 +8,7 @@
         $query->execute();
 
       
-        echo "true";
+        http_response_code(201);
         $connect->close();
+        $query->close();
     }
